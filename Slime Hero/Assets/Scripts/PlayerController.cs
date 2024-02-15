@@ -69,13 +69,6 @@ public class PlayerController : MonoBehaviour
             bodyAnimator.SetBool("isMoving", false);
             faceAnimator.SetBool("isMoving", false);
         }
-
-        if(movementInput.x < 0) {
-            bodyAnimator.SetBool("isFacingLeft", true);
-        }
-        else if(movementInput.x > 0){
-            bodyAnimator.SetBool("isFacingLeft", false);
-        }
     }
 
     private bool TryMove(Vector2 direction) {
@@ -104,7 +97,7 @@ public class PlayerController : MonoBehaviour
     void Animate() {
         faceAnimator.SetFloat("MouseX", mousePos.x);
         faceAnimator.SetFloat("MouseY", mousePos.y);
-        bodyAnimator.SetFloat("LastMoveX", lastMovementInput.x);
+        bodyAnimator.SetFloat("MoveX", lastMovementInput.x);
     }
 
     void OnMove(InputValue movement){
