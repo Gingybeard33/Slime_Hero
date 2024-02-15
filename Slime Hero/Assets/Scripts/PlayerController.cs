@@ -4,13 +4,12 @@ using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Player
 {
     public float moveSpeed = 1f;
-
     public float collisionOffset = 0.05f;
-    public ContactFilter2D movementFilter;
 
+    public ContactFilter2D movementFilter;
     Animator faceAnimator;
     Animator bodyAnimator;
 
@@ -104,7 +103,4 @@ public class PlayerController : MonoBehaviour
         movementInput = movement.Get<Vector2>();
     }
 
-    void OnLook(InputValue look) {
-        // mousePos = look.Get<Vector2>();
-    }
 }
