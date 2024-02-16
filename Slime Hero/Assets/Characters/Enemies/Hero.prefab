@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6248330300849773715}
   - component: {fileID: 4325764995698863953}
-  - component: {fileID: 6637544154527663465}
-  - component: {fileID: 4197569494202088073}
-  - component: {fileID: 3142561094327593597}
   - component: {fileID: 7835913958231562006}
+  - component: {fileID: 6637544154527663465}
+  - component: {fileID: 3142561094327593597}
+  - component: {fileID: 4197569494202088073}
+  - component: {fileID: 1887293032024342634}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -88,6 +89,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &7835913958231562006
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3631997448552320493}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &6637544154527663465
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -133,38 +155,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.10310077, y: 0.1059922}
   m_EdgeRadius: 0
---- !u!114 &4197569494202088073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3631997448552320493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3795b4bbcf5ad1b46a4fe0c1b4957179, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
-  health: 10
-  moveSpeed: 2
-  collisionOffset: 0.02
-  bodyDamage: 2
-  movementStyle: 1
-  movementFilter:
-    useTriggers: 0
-    useLayerMask: 1
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 8
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
 --- !u!50 &3142561094327593597
 Rigidbody2D:
   serializedVersion: 4
@@ -192,24 +182,48 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &7835913958231562006
-Animator:
-  serializedVersion: 5
+--- !u!114 &4197569494202088073
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3631997448552320493}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3795b4bbcf5ad1b46a4fe0c1b4957179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementStyle: 1
+  movementFilter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 8
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  bodyDamage: 2
+  attackSpeed: 1
+  moveSpeed: 2
+  collisionOffset: 0.02
+--- !u!114 &1887293032024342634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3631997448552320493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b312f92e6cb1a0246a6d10acb1607ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  health: 10

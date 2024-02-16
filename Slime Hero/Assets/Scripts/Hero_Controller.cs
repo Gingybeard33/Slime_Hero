@@ -4,7 +4,7 @@ using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Hero_Controller : Enemy
+public class Hero_Controller : MonoBehaviour
 {
     enum MovementStyle 
     {
@@ -21,6 +21,12 @@ public class Hero_Controller : Enemy
     Transform playerTransform;
     Player playerObj;
     Animator animator;
+
+    public float bodyDamage = 2f;
+    public float attackSpeed = 1f;
+    public float moveSpeed = 2f;
+    public float collisionOffset = .02f;
+    private float canAttack;
 
 
     // Start is called before the first frame update
@@ -107,6 +113,43 @@ public class Hero_Controller : Enemy
         }
         else {
             return false;
+        }
+    }
+
+    /// <summary>
+    /// Sent each frame where another object is within a trigger collider
+    /// attached to this object (2D physics only).
+    /// </summary>
+    /// <param name="other">The other Collider2D involved in this collision.</param>
+    void OnTriggerStay2D(Collider2D other)
+    {
+        print("HERE1");
+        if(other.gameObject.tag == "Player") {
+            if(attackSpeed <= canAttack) {
+                other.gameObject.GetComponent<Player>().Damage(bodyDamage);
+                canAttack = 0f;
+            }
+            else {
+                canAttack += Time.deltaTime;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Sent each frame where a collider on another object is touching
+    /// this object's collider (2D physics only).
+    /// </summary>
+    /// <param name="other">The Collision2D data associated with this collision.</param>
+    void OnCollisionStay2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Player") {
+            if(attackSpeed <= canAttack) {
+                other.gameObject.GetComponent<Player>().Damage(bodyDamage);
+                canAttack = 0f;
+            }
+            else {
+                canAttack += Time.deltaTime;
+            }
         }
     }
 

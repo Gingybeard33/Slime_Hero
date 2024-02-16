@@ -4,7 +4,7 @@ using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : Player
+public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 1f;
     public float collisionOffset = 0.05f;
