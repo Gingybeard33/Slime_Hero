@@ -52,15 +52,18 @@ public class Hero_Controller : MonoBehaviour
 
     private void UseMoveStyle() {
         bool isMoving = false;
-        Vector3 direction = new Vector3();
+        Vector2 direction = new Vector2();
         switch(movementStyle) {
             case MovementStyle.Scan:
                 break;
             case MovementStyle.Follow:
                 Vector2 target = new Vector2(playerTransform.position.x, playerTransform.position.y - .5f);
+                direction = target - new Vector2(transform.position.x, transform.position.y);
+                direction.Normalize();
 
                 float step = moveSpeed * Time.fixedDeltaTime;
                 transform.position = Vector2.MoveTowards(transform.position, target, step);
+                isMoving = true;
                 break;
             case MovementStyle.Hide:
                 break;
@@ -89,7 +92,6 @@ public class Hero_Controller : MonoBehaviour
     /// <param name="other">The Collision2D data associated with this collision.</param>
     void OnCollisionStay2D(Collision2D other)
     {
-        print("HERE Oncollision Stay");
         if(other.gameObject.tag == "Player") {
             if(attackSpeed <= canAttack) {
                 other.gameObject.GetComponent<Player>().Damage(bodyDamage);
