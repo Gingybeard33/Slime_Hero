@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 10761193}
   - component: {fileID: 10761195}
   - component: {fileID: 10761194}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24919,7 +24919,7 @@ GameObject:
   m_Component:
   - component: {fileID: 292064695}
   - component: {fileID: 292064694}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25850,6 +25850,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4202395647724346587, guid: 522704f97e523a44197b6af36342ec8f, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5558179972086887888, guid: 522704f97e523a44197b6af36342ec8f, type: 3}
       propertyPath: m_LocalScale.x
       value: 6
@@ -25922,6 +25926,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7801104945444755511, guid: 522704f97e523a44197b6af36342ec8f, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801104945444755511, guid: 522704f97e523a44197b6af36342ec8f, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801104945444755511, guid: 522704f97e523a44197b6af36342ec8f, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801104945444755511, guid: 522704f97e523a44197b6af36342ec8f, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25935,6 +25955,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3142561094327593597, guid: 1095442a412b490498472dc7754928da, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142561094327593597, guid: 1095442a412b490498472dc7754928da, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142561094327593597, guid: 1095442a412b490498472dc7754928da, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142561094327593597, guid: 1095442a412b490498472dc7754928da, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142561094327593597, guid: 1095442a412b490498472dc7754928da, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142561094327593597, guid: 1095442a412b490498472dc7754928da, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3631997448552320493, guid: 1095442a412b490498472dc7754928da, type: 3}
       propertyPath: m_Name
       value: Hero
@@ -26009,7 +26053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6637544154527663465, guid: 1095442a412b490498472dc7754928da, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

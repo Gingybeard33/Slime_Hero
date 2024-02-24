@@ -43,34 +43,41 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if(movementInput != Vector2.zero) {
-            bool success = TryMove(movementInput);
+            // bool success = TryMoveNotPhysics(movementInput);
 
-                if(!success) {
-                    if(movementInput.x != 0) {
-                        success = TryMove(new Vector2(movementInput.x, 0));
-                    }
+            // if(!success) {
+            //     if(movementInput.x != 0) {
+            //         success = TryMoveNotPhysics(new Vector2(movementInput.x, 0));
+            //     }
 
-                    if(!success && movementInput.y != 0){
-                        success = TryMove(new Vector2(0, movementInput.y));
-                    }
-                }
-            if(success) {
-                bodyAnimator.SetBool("isMoving", true);
-                faceAnimator.SetBool("isMoving", true);
-            }
-            else {
-                bodyAnimator.SetBool("isMoving", false);
-                faceAnimator.SetBool("isMoving", false);
-            }
-                
+            //     if(!success && movementInput.y != 0){
+            //         success = TryMoveNotPhysics(new Vector2(0, movementInput.y));
+            //     }
+            // }
+
+            // if(success) {
+            //     bodyAnimator.SetBool("isMoving", true);
+            //     faceAnimator.SetBool("isMoving", true);
+            // }
+            // else {
+            //     bodyAnimator.SetBool("isMoving", false);
+            //     faceAnimator.SetBool("isMoving", false);
+            // }
+
+            // PHYSICS
+
+            rb.velocity = movementInput * moveSpeed;
+            bodyAnimator.SetBool("isMoving", true);
+            faceAnimator.SetBool("isMoving", true);    
         }
         else {
+            rb.velocity = Vector2.zero;
             bodyAnimator.SetBool("isMoving", false);
             faceAnimator.SetBool("isMoving", false);
         }
     }
 
-    private bool TryMove(Vector2 direction) {
+    private bool TryMoveNotPhysics(Vector2 direction) {
         if(direction != Vector2.zero) {
             int count = rb.Cast(
                 direction,
@@ -79,14 +86,10 @@ public class PlayerController : MonoBehaviour
                 moveSpeed * Time.fixedDeltaTime + collisionOffset
             );
 
-            if(count == 0) {
-                lastMovementInput = direction;
-                rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * direction);
-                return true;
-            }
-            else {
-                return false;
-            }
+
+            lastMovementInput = direction;
+            rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * direction);
+            return true;
         }
         else {
             return false;
