@@ -6,20 +6,21 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 1f;
-    public float collisionOffset = 0.05f;
-
+    public PlayerScriptableObject playerData;
     public ContactFilter2D movementFilter;
-    Animator faceAnimator;
-    Animator bodyAnimator;
-    SpriteRenderer spriteRenderer;
+
     [HideInInspector]
     public Vector2 movementInput;
     [HideInInspector]
     public Vector2 lastMovementInput;
     [HideInInspector]
     public Vector2 mousePos;
+
     Rigidbody2D rb;
+    Animator faceAnimator;
+    Animator bodyAnimator;
+    SpriteRenderer spriteRenderer;
+
     
     bool canMove;
 
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     void Move(){
         if(movementInput != Vector2.zero && canMove) {
-            rb.velocity = movementInput * moveSpeed;
+            rb.velocity = movementInput * playerData.MoveSpeed;
             lastMovementInput = movementInput;
             bodyAnimator.SetBool("isMoving", true);
             faceAnimator.SetBool("isMoving", true);    

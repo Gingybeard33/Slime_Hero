@@ -4,7 +4,7 @@ using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Hero_Controller : MonoBehaviour
+public class HeroController : MonoBehaviour
 {
     enum MovementStyle 
     {
@@ -22,9 +22,7 @@ public class Hero_Controller : MonoBehaviour
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     Transform playerTransform;
     Animator animator;
-
-    private float canAttack;
-
+    bool canMove;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +32,7 @@ public class Hero_Controller : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
         animator = GetComponent<Animator>();
+        canMove = true;
     }
 
     void FixedUpdate() {
@@ -42,25 +41,31 @@ public class Hero_Controller : MonoBehaviour
 
     private void UseMoveStyle() {
         bool isMoving = false;
-        Vector2 direction = new Vector2();
-        switch(movementStyle) {
-            case MovementStyle.Scan:
-                break;
-            case MovementStyle.Follow:
-                Vector2 target = new Vector2(playerTransform.position.x, playerTransform.position.y - .5f);
-                direction = target - new Vector2(transform.position.x, transform.position.y);
-                direction.Normalize();
+        Vector2 direction = Vector2.zero;
+        if(canMove)
+        {
+            switch(movementStyle) {
+                case MovementStyle.Scan:
+                    break;
+                case MovementStyle.Follow:
+                    Vector2 target = new Vector2(playerTransform.position.x, playerTransform.position.y - .5f);
+                    direction = target - new Vector2(transform.position.x, transform.position.y);
+                    direction.Normalize();
 
-                float step = enemyData.MoveSpeed * Time.fixedDeltaTime;
-                transform.position = Vector2.MoveTowards(transform.position, target, step);
-                isMoving = true;
-                break;
-            case MovementStyle.Hide:
-                break;
+                    float step = enemyData.MoveSpeed * Time.fixedDeltaTime;
+                    transform.position = Vector2.MoveTowards(transform.position, target, step);
+                    isMoving = true;
+                    break;
+                case MovementStyle.Hide:
+                    break;
+                
+            }
         }
+        animator.SetFloat("MoveX", direction.x);
+        animator.SetFloat("MoveY", direction.y);
 
         if(isMoving) {
-            // animator.SetBool("isMoving", true);
+            animator.SetBool("isMoving", true);
             if(direction.x > 0) {
                 spriteRenderer.flipX = false;
             }
@@ -68,39 +73,19 @@ public class Hero_Controller : MonoBehaviour
                 spriteRenderer.flipX = true;
             }
         }
-    }
-
-
-    void OnCollisionEnter2D(Collision2D other){
-        // other.gameObject.GetComponent<Player>().Damage(bodyDamage);
-    }  
-
-    /// <summary>
-    /// Sent each frame where a collider on another object is touching
-    /// this object's collider (2D physics only).
-    /// </summary>
-    /// <param name="other">The Collision2D data associated with this collision.</param>
-    void OnCollisionStay2D(Collision2D other)
-    {
-        if(other.gameObject.tag == "Player") {
-            if(enemyData.AttackSpeed <= canAttack) {
-                // other.gameObject.GetComponent<Player>().Damage(bodyDamage);
-                canAttack = 0f;
-            }
-            else {
-                canAttack += Time.deltaTime;
-            }
+        else
+        {
+            animator.SetBool("isMoving", false);
         }
     }
 
-    /// <summary>
-    /// Sent when a collider on another object stops touching this
-    /// object's collider (2D physics only).
-    /// </summary>
-    /// <param name="other">The Collision2D data associated with this collision.</param>
-    void OnCollisionExit2D(Collision2D other)
-    {
-        canAttack = 0f;
+    public void LockMovement() {
+        print("LOCKING MOVEMENT");
+        canMove = false;
+    }
+
+    public void UnlockMovement() {
+        canMove = true;
     }
 
 }
