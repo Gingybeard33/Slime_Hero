@@ -5,9 +5,11 @@ using UnityEngine;
 /// <summary>
 /// Base script of all melee ability behaviors [To be placed on a prefab of an ability that is a melee type]
 /// </summary>
-public class MeleeWeaponBehavior : MonoBehaviour
+public class MeleeWeaponBehaviour : MonoBehaviour
 {
     public AbilityScriptableObject abilityData;
+    protected PlayerController pc;
+
 
     protected float currentDamage;
     protected float currentSpeed;
@@ -23,11 +25,13 @@ public class MeleeWeaponBehavior : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-
+        pc = FindAnyObjectByType<PlayerController>();
     }
 
     public virtual void AttackFinished(){
         Destroy(gameObject);
+        pc.UnlockMovement();
+        print("Attack is Finished");
     }
 
     /// <summary>

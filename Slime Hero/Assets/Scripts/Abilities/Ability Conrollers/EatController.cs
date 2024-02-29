@@ -4,8 +4,7 @@ using System.Diagnostics;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-public class SlashController : AbilityController
+public class EatController : AbilityController
 {
     // Start is called before the first frame update
     protected override void Start()
@@ -18,11 +17,10 @@ public class SlashController : AbilityController
         if(canAttack){
             base.Attack();
             pc.LockMovement();
-            GameObject spawnedSlash = Instantiate(abilityData.Prefab);
-            spawnedSlash.transform.position = transform.position;
-            spawnedSlash.GetComponent<Animator>().SetFloat("MouseX", pc.mousePos.x);
-            spawnedSlash.GetComponent<Animator>().SetFloat("MouseY", pc.mousePos.y);
-            CapsuleCollider2D collider = spawnedSlash.GetComponent<CapsuleCollider2D>();
+            GameObject spawnedEat = Instantiate(abilityData.Prefab);
+            spawnedEat.transform.position = transform.position;
+            pc.GetComponent<Animator>().SetTrigger("Eat");
+            CapsuleCollider2D collider = spawnedEat.GetComponent<CapsuleCollider2D>();
             collider.offset = GetColliderPosition(pc.mousePos.x, pc.mousePos.y);
         }
         

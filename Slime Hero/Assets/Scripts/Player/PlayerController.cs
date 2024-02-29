@@ -81,13 +81,36 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnEat() {
-        print("EaTING");
+        // Could be moved to update on start and only when abilites change
+        AbilityController[] abilities = FindObjectsOfType<AbilityController>();
+        
+        // TO BE CHANGED LATER TO CHECK ABILITY IN SLOT
+        foreach(AbilityController ability in abilities)
+        {
+            if(ability.abilityData.name.Equals("Eat Ability"))
+            {
+                print("firing: " + ability.abilityData.name);
+                ability.Attack();
+                break;
+            }
+        }
+        
     }
 
     void OnFire(){
-        AbilityController ability = FindObjectOfType<AbilityController>();
-        ability.Attack();
-        print("firing");
+        AbilityController[] abilities = FindObjectsOfType<AbilityController>();
+
+        // TO BE CHANGED LATER TO CHECK ABILITY IN SLOT
+        foreach(AbilityController ability in abilities)
+        {
+            if(ability.abilityData.name.Equals("Slash Ability"))
+            {
+                print("firing: " + ability.abilityData.name);
+                ability.Attack();
+                break;
+            }
+        }
+        
     }
 
     public void LockMovement() {

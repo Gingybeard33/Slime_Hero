@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlashBehaviour : MeleeWeaponBehaviour
+public class EatBehaviour : MeleeWeaponBehaviour
 {
-
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -14,6 +13,7 @@ public class SlashBehaviour : MeleeWeaponBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 
 }
