@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public PlayerScriptableObject playerData;
     public ContactFilter2D movementFilter;
 
     [HideInInspector]
@@ -21,7 +20,7 @@ public class PlayerController : MonoBehaviour
     Animator bodyAnimator;
     SpriteRenderer spriteRenderer;
 
-    
+    PlayerStats player;
     bool canMove;
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
@@ -32,6 +31,7 @@ public class PlayerController : MonoBehaviour
         faceAnimator = GetComponent<Animator>();
         bodyAnimator = transform.GetChild(0).gameObject.GetComponent<Animator>();
         spriteRenderer = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+        player = GetComponent<PlayerStats>();
         canMove = true;
     }
 
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     void Move(){
         if(movementInput != Vector2.zero && canMove) {
-            rb.velocity = movementInput * playerData.MoveSpeed;
+            rb.velocity = movementInput * player.currentMoveSpeed;
             lastMovementInput = movementInput;
             bodyAnimator.SetBool("isMoving", true);
             faceAnimator.SetBool("isMoving", true);    

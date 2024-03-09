@@ -15,13 +15,13 @@ public class HeroController : MonoBehaviour
 
     [SerializeField] MovementStyle movementStyle;
     public ContactFilter2D movementFilter;
-    public EnemyScriptableObject enemyData;
 
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     Transform playerTransform;
     Animator animator;
+    EnemyStats enemy;
     bool canMove;
 
     // Start is called before the first frame update
@@ -32,6 +32,7 @@ public class HeroController : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
         animator = GetComponent<Animator>();
+        enemy = GetComponent<EnemyStats>();
         canMove = true;
     }
 
@@ -52,7 +53,7 @@ public class HeroController : MonoBehaviour
                     direction = target - new Vector2(transform.position.x, transform.position.y);
                     direction.Normalize();
 
-                    float step = enemyData.MoveSpeed * Time.fixedDeltaTime;
+                    float step = enemy.currentMoveSpeed * Time.fixedDeltaTime;
                     transform.position = Vector2.MoveTowards(transform.position, target, step);
                     isMoving = true;
                     break;

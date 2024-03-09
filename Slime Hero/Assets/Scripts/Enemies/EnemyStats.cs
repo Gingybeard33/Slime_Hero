@@ -9,14 +9,19 @@ public class EnemyStats : MonoBehaviour
     protected HeroController hc;
 
     //Current stats
-    float currentMoveSpeed;
-    float currentHealth;
-    float currentDamage;
-    float currentBodyDamage;
-    float currentAttackSpeed;
+    [HideInInspector] public float currentMoveSpeed;
+    [HideInInspector] public float currentHealth;
+    [HideInInspector] public float currentDamage;
+    [HideInInspector] public float currentBodyDamage;
+    [HideInInspector] public float currentAttackSpeed;
+
+    public float despawnDistance = 20f;
+    Transform player;
+
 
     float attackCooldown;
     Animator animator;
+
 
     void Awake()
     {
@@ -28,6 +33,19 @@ public class EnemyStats : MonoBehaviour
         attackCooldown = currentAttackSpeed;
         animator = GetComponent<Animator>();
         hc = GetComponent<HeroController>();
+    }
+
+    void Start()
+    {
+        player = FindObjectOfType<PlayerStats>().transform;
+    }
+
+    void Update()
+    {
+        if(Vector2.Distance(transform.position, player.position) >= despawnDistance)
+        {
+            MoveEnemy();
+        }
     }
 
     // For ATTACK SPEED BASED ATTACKING
@@ -107,4 +125,20 @@ public class EnemyStats : MonoBehaviour
     // {
     //     attackCooldown = 0f;
     // }
+
+
+    /// <summary>
+    /// This function is called when the MonoBehaviour will be destroyed.
+    /// </summary>
+    private void OnDestroy()
+    {
+        EnemySpawner es = FindObjectOfType<EnemySpawner>();
+        es.OnEnemyKilled();
+    }
+
+    void MoveEnemy()
+    {
+        EnemySpawner es = FindObjectOfType<EnemySpawner>();
+        transform.position = player.position + es.relativeSpawnPoints[Random.Range(0, es.relativeSpawnPoints.Count)].position;
+    }
 }

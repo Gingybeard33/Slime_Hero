@@ -332,7 +332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09823932f53e9741b1a0d8a748ffa2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 27fe7e4169a12b24e90dbbb1f0bacc2c, type: 2}
   movementFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -363,4 +362,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 27fe7e4169a12b24e90dbbb1f0bacc2c, type: 2}
+  currentHealth: 0
+  currentRecovery: 0
+  currentMoveSpeed: 0
+  currentMight: 0
+  currentProjectileMovementSpeed: 0
   invincibilityDuration: 0.5

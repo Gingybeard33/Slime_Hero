@@ -6,11 +6,11 @@ public class PlayerStats : MonoBehaviour
 {
     public PlayerScriptableObject playerData;
 
-    float currentHealth;
-    float currentRecovery;
-    float currentMoveSpeed;
-    float currentMight;
-    float currentProjectileMovementSpeed;
+    [HideInInspector] public float currentHealth;
+    [HideInInspector] public float currentRecovery;
+    [HideInInspector] public float currentMoveSpeed;
+    [HideInInspector] public float currentMight;
+    [HideInInspector] public float currentProjectileMovementSpeed;
 
     // I-Frames
     [Header("I-Frames")]
