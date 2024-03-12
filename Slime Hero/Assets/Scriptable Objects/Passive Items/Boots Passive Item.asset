@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e8dbb5073305549937693eb4149bd4, type: 3}
+  m_Name: Boots Passive Item
+  m_EditorClassIdentifier: 
+  multiplier: 50
+  icon: {fileID: 840113651, guid: 0bd550cad5f719e4b8be8a25703efb9d, type: 3}

@@ -28,4 +28,9 @@ public class AbilityScriptableObject : ScriptableObject
     [SerializeField]
     float abilityDuration;
     public float AbilityDuration { get => abilityDuration; private set => abilityDuration = value;}
+
+    [SerializeField]
+    Sprite icon;
+
+    public Sprite Icon { get => icon; private set => icon = value; }
 }

@@ -17,3 +17,5 @@ MonoBehaviour:
   speed: 0
   cooldownDuration: 0.5
   pierce: 0
+  abilityDuration: 0
+  icon: {fileID: 283550329, guid: dd1e66a5b18233b4ba1d7b4783b08548, type: 3}

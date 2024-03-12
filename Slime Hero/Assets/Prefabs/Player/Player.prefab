@@ -368,3 +368,11 @@ MonoBehaviour:
   currentMight: 0
   currentProjectileMovementSpeed: 0
   invincibilityDuration: 0.5
+  weaponIndex: 0
+  passiveItemIndex: 0
+  startingAbilities:
+  - {fileID: 7585864456596186660, guid: 57f5828c2182fbd40809a2bf8e5cd93a, type: 3}
+  - {fileID: 7943224076046711881, guid: 7afb5e38abee9ec4995ad87cb24a42b5, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

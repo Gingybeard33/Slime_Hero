@@ -19,6 +19,7 @@ public class AbilityController : MonoBehaviour
     protected virtual void Start()
     {
         pc = FindObjectOfType<PlayerController>();
+        print(abilityData);
         currentCooldown = abilityData.CooldownDuration;
         canAttack = false;
     }

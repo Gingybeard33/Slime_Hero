@@ -18,3 +18,4 @@ MonoBehaviour:
   cooldownDuration: 2
   pierce: 0
   abilityDuration: 0.2
+  icon: {fileID: 731401873, guid: f6b18cab25184aa4ca0afa587c6807a1, type: 3}

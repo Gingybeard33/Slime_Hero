@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     Animator faceAnimator;
     Animator bodyAnimator;
     SpriteRenderer spriteRenderer;
+    InventoryManager inventoryManager;
 
     PlayerStats player;
     bool canMove;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         bodyAnimator = transform.GetChild(0).gameObject.GetComponent<Animator>();
         spriteRenderer = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
         player = GetComponent<PlayerStats>();
+        inventoryManager = GetComponent<InventoryManager>();
         canMove = true;
     }
 
@@ -82,33 +84,19 @@ public class PlayerController : MonoBehaviour
 
     void OnEat() {
         // Could be moved to update on start and only when abilites change
-        AbilityController[] abilities = FindObjectsOfType<AbilityController>();
-        
-        // TO BE CHANGED LATER TO CHECK ABILITY IN SLOT
-        foreach(AbilityController ability in abilities)
+        AbilityController ability = inventoryManager.abilitySlots[0];
+        if(ability != null)
         {
-            if(ability.abilityData.name.Equals("Eat Ability"))
-            {
-                print("firing: " + ability.abilityData.name);
-                ability.Attack();
-                break;
-            }
+            ability.Attack();
         }
         
     }
 
     void OnFire(){
-        AbilityController[] abilities = FindObjectsOfType<AbilityController>();
-
-        // TO BE CHANGED LATER TO CHECK ABILITY IN SLOT
-        foreach(AbilityController ability in abilities)
+        AbilityController ability = inventoryManager.abilitySlots[1];
+        if(ability != null)
         {
-            if(ability.abilityData.name.Equals("Slash Ability"))
-            {
-                print("firing: " + ability.abilityData.name);
-                ability.Attack();
-                break;
-            }
+            ability.Attack();
         }
         
     }
