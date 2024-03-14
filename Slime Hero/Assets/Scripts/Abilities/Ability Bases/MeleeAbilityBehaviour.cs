@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Base script of all melee ability behaviors [To be placed on a prefab of an ability that is a melee type]
 /// </summary>
-public class MeleeWeaponBehaviour : MonoBehaviour
+public class MeleeAbilityBehaviour : MonoBehaviour
 {
     public AbilityScriptableObject abilityData;
     protected PlayerController pc;
